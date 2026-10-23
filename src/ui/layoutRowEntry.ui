@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="tiling-assistant@leleat-on-github">
+<interface domain="tiling-rounded@nilocnt">
   <requires lib="gtk" version="4.0"/>
   <template class="TilingLayoutRowEntry" parent="GtkBox">
     <property name="spacing">8</property>

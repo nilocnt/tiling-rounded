@@ -400,4 +400,3 @@ export const LayoutPicker = GObject.registerClass({
         super.destroy();
     }
 });
-

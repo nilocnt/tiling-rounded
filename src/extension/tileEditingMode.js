@@ -65,7 +65,7 @@ class TileEditingMode extends St.Widget {
         if (!openWindows.length || !this._windows.length) {
             // Translators: This is a notification that pops up if the user tries to enter the Tile Editing Mode via a keyboard shortcut.
             const msg = _("Can't enter 'Tile Editing Mode', if no tiled window is visible.");
-            Main.notify('Tiling Assistant', msg);
+            Main.notify('Tiling Rounded', msg);
             this.close();
             return;
         }

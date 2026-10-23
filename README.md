@@ -36,11 +36,11 @@ Download the release archive and install it into the GNOME Shell extensions
 directory:
 
 ```bash
-UUID="tiling-assistant-rounded@nilocnt"
+UUID="tiling-rounded@nilocnt"
 DIR="$HOME/.local/share/gnome-shell/extensions/$UUID"
 
 mkdir -p "$DIR"
-unzip -o tiling-assistant-rounded-v1.zip -d "$DIR"
+unzip -o tiling-rounded@nilocnt.zip -d "$DIR"
 glib-compile-schemas "$DIR/schemas"
 gnome-extensions enable "$UUID"
 ```

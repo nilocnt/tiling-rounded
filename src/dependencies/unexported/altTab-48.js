@@ -37,7 +37,9 @@ export function getWindows(workspace) {
     }).filter((w, i, a) => !w.skip_taskbar && a.indexOf(w) === i);
 }
 
-export const AppSwitcherPopup = GObject.registerClass(
+export const AppSwitcherPopup = GObject.registerClass({
+    GTypeName: 'TilingAssistantAppSwitcherPopup48',
+},
 class AppSwitcherPopup extends SwitcherPopup.SwitcherPopup {
     _init() {
         super._init();
@@ -382,7 +384,9 @@ class AppSwitcherPopup extends SwitcherPopup.SwitcherPopup {
     }
 });
 
-export const AppIcon = GObject.registerClass(
+export const AppIcon = GObject.registerClass({
+    GTypeName: 'TilingAssistantAppIcon48',
+},
 class AppIcon extends St.BoxLayout {
     _init(app) {
         super._init({
@@ -409,7 +413,9 @@ class AppIcon extends St.BoxLayout {
     }
 });
 
-const AppSwitcher = GObject.registerClass(
+const AppSwitcher = GObject.registerClass({
+    GTypeName: 'TilingAssistantAppSwitcher48',
+},
 class AppSwitcher extends SwitcherPopup.SwitcherList {
     _init(apps, altTabPopup) {
         super._init(true);
@@ -453,6 +459,8 @@ class AppSwitcher extends SwitcherPopup.SwitcherList {
 
         this.icons.forEach(
             icon => icon.app.disconnectObject(this));
+        this._arrows.forEach(arrow => arrow.destroy());
+        this._arrows = [];
     }
 
     _setIconSize() {
@@ -626,7 +634,9 @@ class AppSwitcher extends SwitcherPopup.SwitcherList {
     }
 });
 
-const ThumbnailSwitcher = GObject.registerClass(
+const ThumbnailSwitcher = GObject.registerClass({
+    GTypeName: 'TilingAssistantThumbnailSwitcher48',
+},
 class ThumbnailSwitcher extends SwitcherPopup.SwitcherList {
     _init(windows) {
         super._init(false);
@@ -713,5 +723,9 @@ class ThumbnailSwitcher extends SwitcherPopup.SwitcherList {
     _onDestroy() {
         this._clones.forEach(
             clone => clone?.source.disconnectObject(this));
+        this._thumbnailBins.forEach(bin => bin?.destroy());
+        this._labels.forEach(label => label?.destroy());
+        this._thumbnailBins = [];
+        this._labels = [];
     }
 });

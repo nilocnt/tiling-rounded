@@ -136,7 +136,7 @@ export class Util {
     static async initialize(cancellable) {
         const userDir = GLib.get_user_config_dir();
         const dir = Gio.File.new_for_path(
-            GLib.build_filenamev([userDir, 'tiling-assistant']));
+            GLib.build_filenamev([userDir, 'tiling-rounded']));
 
         try {
             await dir.query_info_async(
@@ -288,7 +288,7 @@ export class Util {
         const twm = (await import('./tilingWindowManager.js')).TilingWindowManager;
         const topTileGroup = twm.getTopTileGroup();
         if (!topTileGroup.length) {
-            Main.notify('Tiling Assistant', 'No tiled windows / tiled rects.');
+            Main.notify('Tiling Rounded', 'No tiled windows / tiled rects.');
             return null;
         }
 
@@ -325,7 +325,7 @@ export class Util {
         const freeScreenSpace = twm.getFreeScreen(tRects);
         const rects = freeScreenSpace ? [freeScreenSpace] : workArea.minus(tRects);
         if (!rects.length) {
-            Main.notify('Tiling Assistant', 'No free screen rects to show.');
+            Main.notify('Tiling Rounded', 'No free screen rects to show.');
             return null;
         }
 
@@ -349,7 +349,7 @@ export class Util {
      * Print the tile groups to the logs.
      */
     static async __debugPrintTileGroups() {
-        log('--- Tiling Assistant: Start ---');
+        log('--- Tiling Rounded: Start ---');
         const twm = (await import('./tilingWindowManager.js')).TilingWindowManager;
         const openWindows = twm.getWindows();
         openWindows.forEach(w => {
@@ -361,7 +361,7 @@ export class Util {
             tileGroup.forEach(tw => log(tw.get_wm_class()));
             log('---');
         });
-        log('--- Tiling Assistant: End ---');
+        log('--- Tiling Rounded: End ---');
     }
 }
 
@@ -395,7 +395,7 @@ export class Rect {
                 break;
 
             default:
-                log('Tiling Assistant: Invalid param count for Rect constructor!');
+                log('Tiling Rounded: Invalid param count for Rect constructor!');
         }
     }
 

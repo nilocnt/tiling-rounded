@@ -52,7 +52,7 @@ export default class TilingKeybindingHandler {
         } else if (shortcutName === 'toggle-tiling-popup') {
             const toggleTo = !Settings.getBoolean('enable-tiling-popup');
             Settings.setBoolean('enable-tiling-popup', toggleTo);
-            Main.notify('Tiling Assistant', toggleTo
+            Main.notify('Tiling Rounded', toggleTo
                 // Translators: This is the notification text when the Tiling Popup is enabled/disabled via the keyboard shortcut
                 ? _('Tiling popup enabled')
                 // Translators: This is the notification text when the Tiling Popup is enabled/disabled via the keyboard shortcut

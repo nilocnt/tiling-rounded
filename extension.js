@@ -149,21 +149,20 @@ class SettingsOverrider {
     }
 }
 
-export default class TilingAssistantExtension extends Extension {
+export default class TilingRoundedExtension extends Extension {
     async enable() {
         const cancellable = new Gio.Cancellable();
         this._cancellable = cancellable;
+        const settings = this.getSettings();
         this.settings = (await import('./src/common.js')).Settings;
-        this.settings.initialize(this.getSettings(), this);
+        this.settings.initialize(settings, this);
         this._settingsOverrider = new SettingsOverrider(this.settings);
 
         const twmModule = await import('./src/extension/tilingWindowManager.js');
 
         this._twm = twmModule.TilingWindowManager;
         this._twm.initialize();
-        initPrefs(this.getSettings(
-            'org.gnome.shell.extensions.rounded-window-corners-reborn'
-        ));
+        initPrefs(settings);
         enableEffect();
         await Util.initialize(cancellable);
 
@@ -294,7 +293,7 @@ export default class TilingAssistantExtension extends Extension {
         this._wasLocked = true;
 
         const userPath = GLib.get_user_config_dir();
-        const parentPath = GLib.build_filenamev([userPath, '/tiling-assistant']);
+        const parentPath = GLib.build_filenamev([userPath, '/tiling-rounded']);
         const parent = Gio.File.new_for_path(parentPath);
 
         try {
@@ -337,7 +336,7 @@ export default class TilingAssistantExtension extends Extension {
         this._wasLocked = false;
 
         const userPath = GLib.get_user_config_dir();
-        const path = GLib.build_filenamev([userPath, '/tiling-assistant/tiledSessionRestore2.json']);
+        const path = GLib.build_filenamev([userPath, '/tiling-rounded/tiledSessionRestore2.json']);
         const file = Gio.File.new_for_path(path);
         if (!file.query_exists(null))
             return;
@@ -354,7 +353,19 @@ export default class TilingAssistantExtension extends Extension {
         if (!contents.length)
             return;
 
-        const states = JSON.parse(new TextDecoder().decode(contents));
+        let states;
+        try {
+            const bytes = typeof contents?.get_data === 'function'
+                ? contents.get_data()
+                : contents;
+            const text = typeof bytes === 'string'
+                ? bytes
+                : new TextDecoder().decode(new Uint8Array(bytes));
+            states = JSON.parse(text);
+        } catch (e) {
+            logError(e, '[Tiling Rounded] Failed to restore session state');
+            return;
+        }
         const keysAsNumbers = entries => entries.map(([key, value]) => [parseInt(key), value]);
         const tileGroups = new Map(keysAsNumbers(Object.entries(states.tileGroups)));
         const tileStates = new Map(keysAsNumbers(Object.entries(states.windows)));

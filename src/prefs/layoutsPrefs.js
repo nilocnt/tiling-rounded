@@ -163,7 +163,7 @@ export default class {
         // Create directory structure, if it doesn't exist.
         const userConfigDir = GLib.get_user_config_dir();
         const dirLocation = parentPath ||
-                GLib.build_filenamev([userConfigDir, '/tiling-assistant']);
+                GLib.build_filenamev([userConfigDir, '/tiling-rounded']);
         const parentDir = Gio.File.new_for_path(dirLocation);
 
         try {

@@ -19,9 +19,9 @@ import { computeBounds, computeShadowActorOffset, computeWindowContentsOffset, g
  * needlessly refreshing the effect a lot of times.
  */
 function withActorLock(actor, fn) {
-    const prev = actor.rwcLock;
+    const prev = actor.tilingRoundedLock;
     const next = prev ? prev.then(fn, fn) : fn();
-    actor.rwcLock = next;
+    actor.tilingRoundedLock = next;
     return next;
 }
 export function onAddEffect(actor) {
@@ -31,7 +31,7 @@ export function onAddEffect(actor) {
         // Skip windows that already have the effect to prevent a memory leak
         const shouldHaveEffect = await shouldEnableEffect(win);
         const effect = getRoundedCornersEffect(actor);
-        const hasEffect = effect && actor.rwcCustomData;
+        const hasEffect = effect && actor.tilingRoundedData;
         if (!shouldHaveEffect || hasEffect) {
             logDebug(`Skipping ${win.wmClass}`);
             return;
@@ -61,7 +61,7 @@ function createEffect(actor) {
         propertyBindings.push(binding);
     }
     // Store shadow, app type, visible binding, so that we can access them later
-    actor.rwcCustomData = {
+    actor.tilingRoundedData = {
         shadow,
         unminimizedTimeoutId: 0,
         propertyBindings,
@@ -73,11 +73,11 @@ export function onRemoveEffect(actor) {
     const name = ROUNDED_CORNERS_EFFECT;
     unwrapActor(actor)?.remove_effect_by_name(name);
     // Unbind all properties
-    for (const binding of actor.rwcCustomData?.propertyBindings || []) {
+    for (const binding of actor.tilingRoundedData?.propertyBindings || []) {
         binding.unbind();
     }
     // Remove shadow actor
-    const shadow = actor.rwcCustomData?.shadow;
+    const shadow = actor.tilingRoundedData?.shadow;
     if (shadow) {
         shadow.get_constraints().forEach(constraint => {
             shadow.remove_constraint(constraint);
@@ -87,18 +87,18 @@ export function onRemoveEffect(actor) {
         shadow.destroy();
     }
     // Remove all timeout handler
-    const timeoutId = actor.rwcCustomData?.unminimizedTimeoutId;
+    const timeoutId = actor.tilingRoundedData?.unminimizedTimeoutId;
     if (timeoutId) {
         GLib.source_remove(timeoutId);
     }
-    delete actor.rwcCustomData;
+    delete actor.tilingRoundedData;
 }
 export function onMinimize(actor) {
     // Compatibility with "Compiz alike magic lamp effect".
     // When minimizing a window, disable the shadow to make the magic lamp effect
     // work.
     const magicLampEffect = actor.get_effect('minimize-magic-lamp-effect');
-    const shadow = actor.rwcCustomData?.shadow;
+    const shadow = actor.tilingRoundedData?.shadow;
     const roundedCornersEffect = getRoundedCornersEffect(actor);
     if (magicLampEffect && shadow && roundedCornersEffect) {
         logDebug('Minimizing with magic lamp effect');
@@ -111,7 +111,7 @@ export async function onUnminimize(actor) {
     // When unminimizing a window, wait until the effect is completed before
     // showing the shadow.
     const magicLampEffect = actor.get_effect('unminimize-magic-lamp-effect');
-    const shadow = actor.rwcCustomData?.shadow;
+    const shadow = actor.tilingRoundedData?.shadow;
     const roundedCornersEffect = getRoundedCornersEffect(actor);
     if (magicLampEffect && shadow && roundedCornersEffect) {
         shadow.visible = false;
@@ -132,13 +132,12 @@ export async function onUnminimize(actor) {
     // proper position; otherwise, the effect bounds would use the wrong one and
     // cut off a part of the window.
     //
-    // See https://github.com/flexagoon/rounded-window-corners/issues/124
     if ((await isChromium(actor.metaWindow)) &&
-        actor.rwcCustomData !== undefined) {
-        const oldTimeout = actor.rwcCustomData.unminimizedTimeoutId;
+        actor.tilingRoundedData !== undefined) {
+        const oldTimeout = actor.tilingRoundedData.unminimizedTimeoutId;
         if (oldTimeout !== 0)
             GLib.source_remove(oldTimeout);
-        actor.rwcCustomData.unminimizedTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+        actor.tilingRoundedData.unminimizedTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
             refreshRoundedCorners(actor);
             return GLib.SOURCE_REMOVE;
         });
@@ -146,7 +145,7 @@ export async function onUnminimize(actor) {
 }
 export function onRestacked() {
     for (const actor of global.get_window_actors()) {
-        const shadow = actor.rwcCustomData?.shadow;
+        const shadow = actor.tilingRoundedData?.shadow;
         if (!(actor.visible && shadow)) {
             continue;
         }
@@ -194,7 +193,7 @@ function createShadow(actor) {
  */
 function refreshShadow(actor) {
     const win = actor.metaWindow;
-    const shadow = actor.rwcCustomData?.shadow;
+    const shadow = actor.tilingRoundedData?.shadow;
     if (!shadow)
         return;
     const shadowSettings = win.appears_focused
@@ -212,7 +211,7 @@ function refreshRoundedCorners(actor) {
     return withActorLock(actor, async () => {
         const win = actor.metaWindow;
         const shouldHaveEffect = await shouldEnableEffect(win);
-        const windowInfo = actor.rwcCustomData;
+        const windowInfo = actor.tilingRoundedData;
         const effect = getRoundedCornersEffect(actor);
         const hasEffect = effect && windowInfo;
         // onAddEffect already skips windows that shouldn't have rounded corners.
@@ -241,7 +240,7 @@ function refreshRoundedCorners(actor) {
  */
 function updateEffect(actor) {
     const win = actor.metaWindow;
-    const windowInfo = actor.rwcCustomData;
+    const windowInfo = actor.tilingRoundedData;
     if (!windowInfo)
         return;
     const effect = getRoundedCornersEffect(actor);

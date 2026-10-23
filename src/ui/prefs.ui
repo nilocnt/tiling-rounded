@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="tiling-assistant@leleat-on-github">
+<interface domain="tiling-rounded@nilocnt">
 
   <!-- ======================================================================================== -->
   <!-- = Headerbar Info Popup ================================================================= -->
@@ -438,7 +438,7 @@
       <!-- ======================================================================================== -->
       <child>
         <object class="AdwPreferencesGroup">
-          <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'General' tab. See https://github.com/ubuntu/Tiling-Assistant/wiki/Window-Grab-Modes for more information">Default Window Movement Mode</property>
+          <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'General' tab.">Default Window Movement Mode</property>
           <property name="description" translatable="yes" comments="Translators: This is the explanation for the preference group 'Default Window Movement Mode' in the 'General' tab">The movement mode that is activated when no modifier key is pressed</property>
           <property name="visible"
                     bind-source="enable_advanced_experimental_features"
@@ -480,8 +480,8 @@
           </child>
           <child>
             <object class="AdwActionRow" id="ignore_ta_row">
-              <property name="title" translatable="yes" comments="Translators: This is an option for the preference group 'Default Window Movement Mode' in the 'General' tab. In this mode core features (Tiling Popup and Tile Groups) will be disabled">Ignore Tiling Assistant</property>
-              <property name="subtitle" translatable="yes" comments="Translators: This is the explanation for the 'Ignore Tiling Assistant' option in the preference group 'Default Window Movement Mode' in the 'General' tab">Use Edge Tiling without Tiling Assistant's features</property>
+              <property name="title" translatable="yes" comments="Translators: This is an option for the preference group 'Default Window Movement Mode' in the 'General' tab. In this mode core features (Tiling Popup and Tile Groups) will be disabled">Ignore extension features</property>
+              <property name="subtitle" translatable="yes" comments="Translators: This is the explanation for the 'Ignore extension features' option in the preference group 'Default Window Movement Mode' in the 'General' tab">Use Edge Tiling without extension features</property>
               <property name="activatable-widget">ignore_ta_checkbutton</property>
               <child type="prefix">
                 <object class="GtkCheckButton" id="ignore_ta_checkbutton">
@@ -565,7 +565,7 @@
           </child>
           <child>
             <object class="AdwComboRow" id="ignore_ta_mod">
-              <property name="title" translatable="yes" comments="Translators: This is a setting in the 'Other' preference group in the 'General' tab. This will set the modifier to activate the move mode 'Ignore Tiling Assistant'">'Ignore Tiling Assistant' Mode Activator</property>
+              <property name="title" translatable="yes" comments="Translators: This is a setting in the 'Other' preference group in the 'General' tab. This will set the modifier to activate the move mode 'Ignore extension features'">'Ignore extension features' Mode Activator</property>
               <property name="visible"
                         bind-source="enable_advanced_experimental_features"
                         bind-property="active"
@@ -793,29 +793,29 @@
     <!-- ======================================================================================== -->
     <child>
       <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to screen halves without spawning a Tiling Popup">Edge Tiling without Tiling Assistant</property>
+        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to screen halves without spawning a Tiling Popup">Native edge tiling</property>
         <property name="visible"
                   bind-source="enable_advanced_experimental_features"
                   bind-property="active"
                   bind-flags="sync-create"/>
         <child>
           <object class="ShortcutListener" id="tile_top_half_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Edge Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the top screen half without spawning a Tiling Popup">Tile to top</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native edge tiling' preference group in the 'Keybindings' tab to tile window to the top screen half without spawning a Tiling Popup">Tile to top</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_bottom_half_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Edge Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the bottom screen half without spawning a Tiling Popup">Tile to bottom</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native edge tiling' preference group in the 'Keybindings' tab to tile window to the bottom screen half without spawning a Tiling Popup">Tile to bottom</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_left_half_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Edge Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the left screen half without spawning a Tiling Popup">Tile to left</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native edge tiling' preference group in the 'Keybindings' tab to tile window to the left screen half without spawning a Tiling Popup">Tile to left</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_right_half_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Edge Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the right screen half without spawning a Tiling Popup">Tile to right</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native edge tiling' preference group in the 'Keybindings' tab to tile window to the right screen half without spawning a Tiling Popup">Tile to right</property>
           </object>
         </child>
       </object>
@@ -825,29 +825,29 @@
     <!-- ======================================================================================== -->
     <child>
       <object class="AdwPreferencesGroup">
-        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to quarters without spawning a Tiling Popup">Corner Tiling without Tiling Assistant</property>
+        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to quarters without spawning a Tiling Popup">Native corner tiling</property>
         <property name="visible"
                   bind-source="enable_advanced_experimental_features"
                   bind-property="active"
                   bind-flags="sync-create"/>
         <child>
           <object class="ShortcutListener" id="tile_topleft_quarter_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Corner Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the top left quarter without spawning a Tiling Popup">Tile to top-left</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native corner tiling' preference group in the 'Keybindings' tab to tile window to the top left quarter without spawning a Tiling Popup">Tile to top-left</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_topright_quarter_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Corner Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the top right quarter without spawning a Tiling Popup">Tile to top-right</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native corner tiling' preference group in the 'Keybindings' tab to tile window to the top right quarter without spawning a Tiling Popup">Tile to top-right</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_bottomleft_quarter_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Corner Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the bottom left quarter without spawning a Tiling Popup">Tile to bottom-left</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native corner tiling' preference group in the 'Keybindings' tab to tile window to the bottom left quarter without spawning a Tiling Popup">Tile to bottom-left</property>
           </object>
         </child>
         <child>
           <object class="ShortcutListener" id="tile_bottomright_quarter_ignore_ta">
-            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Corner Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the bottom right quarter without spawning a Tiling Popup">Tile to bottom-right</property>
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Native corner tiling' preference group in the 'Keybindings' tab to tile window to the bottom right quarter without spawning a Tiling Popup">Tile to bottom-right</property>
           </object>
         </child>
       </object>

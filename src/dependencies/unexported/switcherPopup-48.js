@@ -31,6 +31,7 @@ function primaryModifier(mask) {
 }
 
 export const SwitcherPopup = GObject.registerClass({
+    GTypeName: 'TilingAssistantSwitcherPopup48',
     GTypeFlags: GObject.TypeFlags.ABSTRACT,
 }, class SwitcherPopup extends St.Widget {
     _init(items) {
@@ -357,7 +358,9 @@ export const SwitcherPopup = GObject.registerClass({
     }
 });
 
-const SwitcherButton = GObject.registerClass(
+const SwitcherButton = GObject.registerClass({
+    GTypeName: 'TilingAssistantSwitcherButton48',
+},
 class SwitcherButton extends St.Button {
     _init(square) {
         super._init({
@@ -377,6 +380,7 @@ class SwitcherButton extends St.Button {
 });
 
 export const SwitcherList = GObject.registerClass({
+    GTypeName: 'TilingAssistantSwitcherList48',
     Signals: {
         'item-activated': {param_types: [GObject.TYPE_INT]},
         'item-entered': {param_types: [GObject.TYPE_INT]},

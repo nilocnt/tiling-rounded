@@ -78,7 +78,7 @@ export default class TilingLayoutsManager {
         // Add panel indicator
         this._panelIndicator = new PanelIndicator();
         Main.panel.addToStatusArea(
-            'tiling-assistant@leleat-on-github',
+            'tiling-rounded@nilocnt',
             this._panelIndicator);
         this._settingsId = Settings.changed('show-layout-panel-indicator', () => {
             this._panelIndicator.visible = Settings.getBoolean('show-layout-panel-indicator');
@@ -103,7 +103,7 @@ export default class TilingLayoutsManager {
         const layouts = Util.getLayouts();
         if (!layouts.length) {
             // Translators: This is a notification that pops up when a keyboard shortcut to activate a user-defined tiling layout is activated but no layout was defined by the user.
-            Main.notify('Tiling Assistant', _('No valid layouts defined.'));
+            Main.notify('Tiling Rounded', _('No valid layouts defined.'));
             return;
         }
 
@@ -195,7 +195,7 @@ export default class TilingLayoutsManager {
         const app = Shell.AppSystem.get_default().lookup_app(appId);
         if (!app) {
             // Translators: This is a notification that pops up when a keyboard shortcut to activate a user-defined tiling layout is activated and the user attached an app to a tile so that a new instance of that app will automatically open in the tile. But that app seems to have been uninstalled since the definition of the layout.
-            Main.notify('Tiling Assistant', _('Popup Layouts: App not found.'));
+            Main.notify('Tiling Rounded', _('Popup Layouts: App not found.'));
             this._finishLayouting();
             return;
         }
@@ -465,7 +465,7 @@ const PanelIndicator = GObject.registerClass({
     Signals: { 'layout-activated': { param_types: [GObject.TYPE_INT] } }
 }, class PanelIndicator extends PanelMenu.Button {
     _init() {
-        super._init(0.0, 'Layout Indicator (Tiling Assistant)');
+        super._init(0.0, 'Layout Indicator (Tiling Rounded)');
 
         const path = GLib.build_filenamev([
             Settings.getExtension().path,

@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.tiling-rounded" path="/org/gnome/shell/extensions/tiling-rounded/">
+    <key name="enable-tiling-popup" type="b">
+      <default>true</default>
+    </key>
+    <key name="tiling-popup-all-workspace" type="b">
+      <default>false</default>
+    </key>
+    <key name="enable-raise-tile-group" type="b">
+      <default>true</default>
+    </key>
+    <key name="tilegroups-in-app-switcher" type="b">
+      <default>false</default>
+    </key>
+    <key name="dynamic-keybinding-behavior" type="i">
+      <default>0</default>
+    </key>
+    <key name="focus-hint" type="i">
+      <default>0</default>
+    </key>
+    <key name="focus-hint-color" type="s">
+      <default>''</default>
+    </key>
+    <key name="focus-hint-outline-border-radius" type="i">
+      <default>8</default>
+    </key>
+    <key name="focus-hint-outline-size" type="i">
+      <default>8</default>
+    </key>
+    <key name="focus-hint-outline-style" type="i">
+      <default>0</default>
+    </key>
+    <key name="window-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="single-screen-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="screen-top-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="screen-left-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="screen-right-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="screen-bottom-gap" type="i">
+      <default>0</default>
+    </key>
+    <key name="maximize-with-gap" type="b">
+      <default>false</default>
+    </key>
+    <key name="monitor-switch-grace-period" type="b">
+      <default>true</default>
+    </key>
+    <key name="toggle-tiling-popup" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-edit-mode" type="as">
+      <default>[]</default>
+    </key>
+    <key name="auto-tile" type="as">
+      <default>[]</default>
+    </key>
+    <key name="toggle-always-on-top" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-maximize" type="as">
+      <default>['&lt;Super&gt;Up','&lt;Super&gt;KP_5']</default>
+    </key>
+    <key name="tile-maximize-vertically" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-maximize-horizontally" type="as">
+      <default>[]</default>
+    </key>
+    <key name="restore-window" type="as">
+      <default>['&lt;Super&gt;Down']</default>
+    </key>
+    <key name="center-window" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-top-half" type="as">
+      <default>['&lt;Super&gt;KP_8']</default>
+    </key>
+    <key name="tile-bottom-half" type="as">
+      <default>['&lt;Super&gt;KP_2']</default>
+    </key>
+    <key name="tile-left-half" type="as">
+      <default>['&lt;Super&gt;Left','&lt;Super&gt;KP_4']</default>
+    </key>
+    <key name="tile-right-half" type="as">
+      <default>['&lt;Super&gt;Right','&lt;Super&gt;KP_6']</default>
+    </key>
+    <key name="tile-topleft-quarter" type="as">
+      <default>['&lt;Super&gt;KP_7']</default>
+    </key>
+    <key name="tile-topright-quarter" type="as">
+      <default>['&lt;Super&gt;KP_9']</default>
+    </key>
+    <key name="tile-bottomleft-quarter" type="as">
+      <default>['&lt;Super&gt;KP_1']</default>
+    </key>
+    <key name="tile-bottomright-quarter" type="as">
+      <default>['&lt;Super&gt;KP_3']</default>
+    </key>
+    <key name="tile-top-half-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-bottom-half-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-left-half-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-right-half-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-topleft-quarter-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-topright-quarter-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-bottomleft-quarter-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="tile-bottomright-quarter-ignore-ta" type="as">
+      <default>[]</default>
+    </key>
+    <key name="import-layout-examples" type="b">
+      <default>true</default>
+    </key>
+    <key name="show-layout-panel-indicator" type="b">
+      <default>false</default>
+    </key>
+    <key name="search-popup-layout" type="as">
+      <default>[]</default>
+    </key>
+    <key name="favorite-layout" type="i">
+      <default>-1</default>
+    </key>
+    <key name="favorite-layouts" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout0" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout1" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout2" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout3" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout4" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout5" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout6" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout7" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout8" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout9" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout10" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout11" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout12" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout13" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout14" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout15" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout16" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout17" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout18" type="as">
+      <default>[]</default>
+    </key>
+    <key name="activate-layout19" type="as">
+      <default>[]</default>
+    </key>
+    <key name="enable-advanced-experimental-features" type="b">
+      <default>false</default>
+    </key>
+    <key name="enable-tile-animations" type="b">
+      <default>true</default>
+    </key>
+    <key name="enable-untile-animations" type="b">
+      <default>true</default>
+    </key>
+    <key name="disable-tile-groups" type="b">
+      <default>false</default>
+    </key>
+    <key name="default-move-mode" type="i">
+      <default>0</default>
+    </key>
+    <key name="low-performance-move-mode" type="b">
+      <default>false</default>
+    </key>
+    <key name="enable-layout-picker" type="b">
+      <default>true</default>
+    </key>
+    <key name="adapt-edge-tiling-to-favorite-layout" type="b">
+      <default>false</default>
+    </key>
+    <key name="move-adaptive-tiling-mod" type="i">
+      <default>1</default>
+    </key>
+    <key name="move-favorite-layout-mod" type="i">
+      <default>2</default>
+    </key>
+    <key name="ignore-ta-mod" type="i">
+      <default>0</default>
+    </key>
+    <key name="vertical-preview-area" type="i">
+      <default>15</default>
+    </key>
+    <key name="horizontal-preview-area" type="i">
+      <default>15</default>
+    </key>
+    <key name="toggle-maximize-tophalf-timer" type="i">
+      <default>600</default>
+    </key>
+    <key name="enable-hold-maximize-inverse-landscape" type="b">
+      <default>false</default>
+    </key>
+    <key name="enable-hold-maximize-inverse-portrait" type="b">
+      <default>false</default>
+    </key>
+    <key name="debugging-show-tiled-rects" type="as">
+      <default>[]</default>
+    </key>
+    <key name="debugging-free-rects" type="as">
+      <default>[]</default>
+    </key>
+    <key name="last-version-installed" type="i">
+      <default>-1</default>
+    </key>
+    <key name="overridden-settings" type="a{sv}">
+      <default>[]</default>
+    </key>
+    <key name="settings-version" type="u">
+      <default>0</default>
+    </key>
+    <key name="whitelist" type="b">
+      <summary>Use Blacklist as Whitelist instead</summary>
+      <default>false</default>
+    </key>
+    <key name="blacklist" type="as">
+      <default>[]</default>
+      <summary>window here will not be rounded</summary>
+      <description>
+        The contents of the list represent the instance part of the window's
+        `WM_CLASS`, as same as the output of `xprop WM_CLASS|cut -d \" -f 2`
+      </description>
+    </key>
+    <key name="skip-libadwaita-app" type="b">
+      <summary>Skip Libadwaita applications</summary>
+      <default>false</default>
+    </key>
+    <key name="skip-libhandy-app" type="b">
+      <summary>Skip LibHandy applications</summary>
+      <default>false</default>
+    </key>
+    <key name="border-width" type="i">
+      <summary>Border width for rounded corners window</summary>
+      <range min="-40" max="40" />
+      <default>0</default>
+    </key>
+    <key name="global-rounded-corner-settings" type="a{sv}">
+      <summary>Global rounded corners settings for all windows</summary>
+      <default>
+        
+        {
+          'padding': &lt;{
+            'left': &lt;uint32 1&gt;,
+            'right': &lt;uint32 1&gt;,
+            'top': &lt;uint32 1&gt;,
+            'bottom': &lt;uint32 1&gt;
+          }&gt;,
+          'keepRoundedCorners': &lt;{
+            'maximized': &lt;true&gt;,
+            'fullscreen': &lt;false&gt;
+          }&gt;,
+          'borderRadius': &lt;uint32 15&gt;,
+          'smoothing': &lt;0&gt;,
+          'borderColor': &lt;[0.5, 0.5, 0.5, 1.0]&gt;,
+          'enabled': &lt;true&gt;
+        }
+      </default>
+    </key>
+    <key name="custom-rounded-corner-settings" type="a{sv}">
+      <summary>A directory to setup custom paddings for special windows</summary>
+      <default>{}</default>
+    </key>
+    <key name="focused-shadow" type="a{si}">
+      <summary>Shadow for focused window</summary>
+      <default>
+        {
+          'horizontalOffset': 0,
+          'verticalOffset': 4,
+          'blurOffset': 28,
+          'spreadRadius': 4,
+          'opacity': 60
+        }
+      </default>
+    </key>
+    <key name="unfocused-shadow" type="a{si}">
+      <summary>Shadow for unfocused window</summary>
+      <default>
+        {
+          'horizontalOffset': 0,
+          'verticalOffset': 2,
+          'blurOffset': 12,
+          'spreadRadius': -1,
+          'opacity': 65
+        }
+      </default>
+    </key>
+    <key name="keep-shadow-for-maximized-fullscreen" type="b">
+      <summary>Keep shadows for maximized and fullscreen windows</summary>
+      <default>false</default>
+    </key>
+    <key name="debug-mode" type="b">
+      <summary>If enabled, extension will show debug info into journalctl</summary>
+      <default>false</default>
+    </key>
+    <key name="tweak-kitty-terminal" type="b">
+      <default>false</default>
+    </key>
+    <key name="legacy-settings-migrated" type="b">
+      <default>false</default>
+    </key>
+  </schema>
+</schemalist>
